@@ -30,8 +30,6 @@ src="https://www.facebook.com/tr?id=578089375335526&ev=PageView&noscript=1"
         <div class="headcontainer">
             <h3 class="headfirst">🔥RUDRA TOSS FIXER™🔥</h3>
             <h5>✅100% Accuracy Milega Yaha✅</h5>
-            <h1 class="time">30</h1>
-            <span class="txt">Second Left</span> 
            <div class="photo">
             <img src="logo.JPG" alt="">
            </div>
@@ -40,39 +38,35 @@ src="https://www.facebook.com/tr?id=578089375335526&ev=PageView&noscript=1"
            <h4 class="lasthead">⚡63/64 World Cup Toss Pass⚡</h4>
            <h4 class="lasthead">⚡59/61 Big Bash League Toss Pass⚡</h4>
            
-           <a href="https://t.me/+gAO8DWI6LXE2NGNl"  onclick="fbq('track', 'Subscribe');"><button class="btn" id="blinking-button">JOIN THE CHANNEL NOW</button></a>
+          <button class="btn" id="blinking-button">JOIN THE CHANNEL NOW</button>
         </div>
     </div>
 
 
-<!--     <script>
-        var timer = document.querySelector('.time');
-        var bt = document.querySelector('.btn')
-        var tx = document.querySelector('.txt')
+   <script>
+    // Prevent duplicate firing using a session flag
+    const pixelEventKey = 'subscribe_event_fired';
 
-        var count = timer.innerText;
-        function set(){
+    document.getElementById('blinking-button').addEventListener('click', function () {
+        if (!sessionStorage.getItem(pixelEventKey)) {
+            // Generate a unique event ID
+            const eventId = 'subscribe_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
 
-               var sec =  setInterval(() => {
-                if(count == 0) return stopsec()
-                    count--;
-                    timer.innerText = count;
-                }, 1000);
+            // Fire the Meta Pixel event with unique ID
+            fbq('track', 'Subscribe', {}, { eventID: eventId });
 
-                
-                function stopsec(){
-                clearInterval(sec);
-                timer.style.visibility = "hidden";
-                tx.style.visibility = "hidden";
-            } 
+            // Mark this session as fired
+            sessionStorage.setItem(pixelEventKey, 'true');
+
+            // Redirect after short delay
+            setTimeout(function () {
+                window.location.href = "https://t.me/+gAO8DWI6LXE2NGNl";
+            }, 200);
+        } else {
+            // Already fired, just redirect
+            window.location.href = "https://t.me/+gAO8DWI6LXE2NGNl";
         }
-        function redirect(){
-            window.location = "https://t.me/+gAO8DWI6LXE2NGNl";
-        }
-
-        setTimeout('redirect()',30000);
-        set();
-    
-    </script> -->
+    });
+</script>
 </body>
 </html>
